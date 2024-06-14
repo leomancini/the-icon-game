@@ -59,9 +59,11 @@ function update_clock() {
   }
 
   // determine AM/PM
+  var am_pm = hours >= 12 ? "PM" : "AM";
+
+  // fix hour 12
   hours = hours % 12;
   hours = hours ? hours : 12;
-  var am_pm = hours >= 12 ? "PM" : "AM";
 
   // generate string and update clock element
   var clock_string =
