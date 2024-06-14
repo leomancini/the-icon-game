@@ -344,6 +344,7 @@ $(document)
       "menu-bar-icon-play.png",
       "menu-bar-icon-speed.png",
       "menu-bar-selected-repeat.png",
+      "window-background-repeat.png",
     ]);
 
     // set click with current and update every second
