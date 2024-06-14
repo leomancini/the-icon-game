@@ -155,14 +155,18 @@ body {
       background: #426bad;
 
       #loading-window {
+        display: block;
         position: absolute;
         width: 480px;
+        min-width: 480px;
         height: 360px;
+        min-height: 360px;
         left: 50%;
         top: 50%;
         margin-left: -240px;
         margin-top: -180px;
-        background: url("@{base_image_url}window-background-repeat.png");
+        background-image: url("@{base_image_url}window-background-repeat.png");
+        background-color: white;
         box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.4);
         display: none;
 
