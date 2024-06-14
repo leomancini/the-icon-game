@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>The Icon Game</title>
+		<link rel="stylesheet/less" href="resources/css/style.less">
+		<script src="resources/js/lib/less.js"></script>
+		<script src="resources/js/lib/jquery.js"></script>
+		<script src="resources/js/lib/jquery-ui.min.js"></script>
+		<script src="resources/js/desktop.js"></script>
+		<script src="resources/js/game.js"></script>
+		<link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2Ffavicon.png">
+	</head>
+	<body class="device-showing">
+		<div id="boot-prompt">Click anywhere to start...</div>
+		
+		<audio id="boot-sound" src="https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2Fboot.wav" autostart="false"></audio>
+		
+		<div id="curtain"></div>
+		
+		<div id="screen" class="in-device">
+			<div id="off"></div>
+				
+			<div id="startup">
+				<div class="apple-logo"></div>
+				<div id="spinner"></div>
+			</div>
+			
+			<div id="loading">
+				<div id="loading-window">
+					<div id="mac-os-x-loading"></div>
+					<div class="progress-bar">
+						<div class="progress-bar-fill">
+						    <div class="progress-bar-fill-bg"></div>
+						</div>
+					</div>
+					<div id="loading-message">Taking picture for desktop...</div>
+				</div>
+			</div>
+			
+			<div id="game">
+				<div id="menu-bar">
+					<div class="apple-logo"></div>
+					<div id="left-contents">
+						<div class="app-name">Finder</div>
+						<div class="app-menu-item-set" data-app-id="finder">
+							<div class="app-menu-item">File</div>
+							<div class="app-menu-item">Edit</div>
+							<div class="app-menu-item">View</div>
+							<div class="app-menu-item">Go</div>
+							<div class="app-menu-item">Window</div>
+							<div class="app-menu-item">Help</div>
+						</div>
+						<div class="app-menu-item-set" data-app-id="quicktime">
+							<div class="app-menu-item">File</div>
+							<div class="app-menu-item">Edit</div>
+							<div class="app-menu-item">View</div>
+							<div class="app-menu-item">Window</div>
+							<div class="app-menu-item">Help</div>
+						</div>
+						<div class="app-menu-item-set" data-app-id="system-preferences">
+							<div class="app-menu-item">Edit</div>
+							<div class="app-menu-item">View</div>
+							<div class="app-menu-item">Window</div>
+							<div class="app-menu-item">Help</div>
+						</div>
+					</div>
+				
+					<div id="right-contents">
+						<div id="score-wrapper" class="menu-bar-item">Score: <div class="score">0</div></div>
+						<div class="menu-bar-icon-wrapper toggle-state menu-bar-item paused" id="menu-bar-icon-toggle-game-state">
+							<div class="menu-bar-icon"></div>
+						</div>
+						<div id="menu-bar-icon-dropdown-pair" class="menu-bar-item" style="margin-right: 5px;">
+							<div class="menu-bar-icon-wrapper toggle-dropdown" id="menu-bar-icon-speed">
+								<div class="menu-bar-icon"></div>
+							</div>
+							<div class="dropdown">
+								<input type="range" min="10" max="100" class="slider velocity">
+							</div>
+						</div>
+						<div id="clock" class="menu-bar-item"></div>
+					</div>
+					<div id="right-corner"></div>
+				</div>
+			
+				<div id="desktop">
+					<div class="window brushed" id="streak-notification">
+						<label>You're on a streak!!!</label>
+						<div id="rainbow"></div>
+					</div>
+					
+					<div class="window aqua" id="finder" data-app-name-id="finder" data-app-name-display="Finder">
+						<div class="title-bar">
+							<div class="window-controls aqua"></div>
+						</div>
+						<div id="mac-os-x-welcome"></div>
+						<h1>The Icon Game</h1>
+						<h2>Click the icons as they fall to score points. Smaller icons are worth more points!</h2>
+						<h3>Score: <span class="score">0</span></h3>
+						<div class="button blue" style="margin: 0 auto;" id="toggle-game-state"><label>Start</label></div>
+						<div class="background"></div>
+					</div>
+
+					<div class="window brushed" id="quicktime" data-app-name-id="quicktime" data-app-name-display="QuickTime Player">
+						<div class="window-controls brushed"></div>
+					</div>
+
+					<div class="window aqua" id="system-preferences" data-app-name-id="system-preferences" data-app-name-display="System Preferences">
+						<div class="title-bar">
+							<div class="window-controls aqua"></div>
+						</div>
+						<div id="icon-bar"></div>
+						<div id="content">
+							<div class="content-section">
+								<label><b>Icon Speed</b></label>
+								<br>
+								<label>pixels per second</label>
+								<br>
+								<br>
+								<input type="range" min="10" max="100" class="slider velocity">
+								<br>
+								<label>10</label><label style="margin-left: 88px;">100</label>
+							</div>
+							<div class="content-section">
+								<label><b>Device View</b></label>
+								<br>
+								<br>
+								<div class="button" id="toggle-device"><label>Toggle</label></div>
+							</div>
+							<div class="content-section">
+								<label><b>Icon Circles</b></label>
+								<br>
+								<br>
+								<div class="button" id="toggle-icon-circles"><label>Toggle</label></div>
+							</div>
+						</div>
+						<div class="background"></div>
+					</div>
+					
+					<div id="dock-wrapper">
+						<div id="dock-icons">
+							<div class="dock-icon app open" data-app-id="finder">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F18.png');"></div>
+								<label>Finder</label>
+							</div>
+							<div class="dock-icon app" data-app-id="mail">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F12.png');"></div>
+								<label>Mail</label>
+							</div>
+							<div class="dock-icon app" data-app-id="ichat">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F23.png');"></div>
+								<label>iChat</label>
+							</div>
+							<div class="dock-icon app" data-app-id="address-book">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F13.png');"></div>
+								<label>Address Book</label>
+							</div>
+							<div class="dock-icon app" data-app-id="internet-explorer">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F28.png');"></div>
+								<label>Internet Explorer</label>
+							</div>
+							<div class="dock-icon app" data-app-id="itunes">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F51.png');"></div>
+								<label>iTunes</label>
+							</div>
+							<div class="dock-icon app" data-app-id="iphoto">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F64.png');"></div>
+								<label>iPhoto</label>
+							</div>
+							<div class="dock-icon app" data-app-id="imovie">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F25.png');"></div>
+								<label>iMovie</label>
+							</div>
+							<div class="dock-icon app" data-app-id="sherlock">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F3.png');"></div>
+								<label>Sherlock</label>
+							</div>
+							<div class="dock-icon app" data-app-id="quicktime">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F36.png');"></div>
+								<label>QuickTime</label>
+							</div>
+							<div class="dock-icon app openable" data-app-id="system-preferences">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F24.png');"></div>
+								<label>System Preferences</label>
+							</div>
+							<div id="dock-divider"></div>
+							<div class="dock-icon">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F14.png');"></div>
+								<label>Indeed.com</label></div>
+							<div class="dock-icon">
+								<div class="dock-icon-image" style="background-image: url('https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2F67.png');"></div>
+								<label>Trash</label>
+							</div>
+							<div id="dock-background"></div>
+						</div>
+					</div>
+					
+					<div id="paused-curtain"></div>
+					
+					<div id="icons"></div>
+				</div>
+
+				<div class="desktop-picture" id="itunes-visualizer">
+					<video loop preload="auto">
+					  <source src="https://cdn.glitch.com/9920a9c9-30b6-4f69-b49c-f6141ca56fb3%2Fitunes-visualizer.mp4?1539556013313" type="video/mp4">
+					</video>
+				</div>
+				<div class="desktop-picture" id="default"></div>
+			</div>
+		</div>
+		
+		<div id="device" class="showing" style="transform: scale(.89)"></div>
+
+	</body>
+</html>
