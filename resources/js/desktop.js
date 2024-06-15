@@ -332,20 +332,12 @@ $(document)
 
     // preload some core images
     preload_images([
-      "window-title-bar-corners.png",
-      "window-title-bar-fill.png",
-      "window-controls-aqua.png",
       "window-streak.png",
       "mac-os-x-welcome.jpg",
       "mac-os-x-loading.jpg",
       "button.png",
       "button-blue.png",
       "button-blue-pulse-overlay.png",
-      "slider-handle.png",
-      "menu-bar-icon-pause.png",
-      "menu-bar-icon-play.png",
-      "menu-bar-icon-speed.png",
-      "menu-bar-selected-repeat.png",
     ]);
 
     // set click with current and update every second
